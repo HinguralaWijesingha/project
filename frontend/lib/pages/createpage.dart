@@ -1,8 +1,18 @@
 import "package:flutter/material.dart";
+import "package:frontend/services/API.dart";
 
-class CreateScreen extends StatelessWidget {
+class CreateScreen extends StatefulWidget {
   const CreateScreen({super.key});
-  
+
+  @override
+  State<CreateScreen> createState() => _CreateScreenState();
+}
+
+class _CreateScreenState extends State<CreateScreen> {
+  var nameController = TextEditingController();
+  var phoneController = TextEditingController();
+  var emailController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +27,7 @@ class CreateScreen extends StatelessWidget {
         ),
         child: Center(
           child: Container(
-            margin: const EdgeInsets.symmetric(vertical: 100, horizontal: 20),
+            margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
             padding: const EdgeInsets.all(40),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
@@ -35,6 +45,7 @@ class CreateScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextField(
+                  controller: nameController,
                   decoration:  InputDecoration(
                     enabledBorder: OutlineInputBorder(
                         borderSide:  const BorderSide(color: Colors.grey),
@@ -52,6 +63,7 @@ class CreateScreen extends StatelessWidget {
 
 
                 TextField(
+                  controller: phoneController,
                   decoration:  InputDecoration(
                     enabledBorder: OutlineInputBorder(
                         borderSide:  const BorderSide(color: Colors.grey),
@@ -68,6 +80,7 @@ class CreateScreen extends StatelessWidget {
                 const SizedBox(height: 20),
 
                 TextField(
+                  controller: emailController,
                   decoration:  InputDecoration(
                     enabledBorder: OutlineInputBorder(
                         borderSide:  const BorderSide(color: Colors.grey),
@@ -86,7 +99,14 @@ class CreateScreen extends StatelessWidget {
                   width: double.infinity,
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () {}, 
+                    onPressed: () {
+                      var data = {
+                        "name": nameController.text,
+                        "phone": phoneController.text,
+                        "email": emailController.text,
+                      };
+                       Api.addUser(data);  
+                    }, 
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue,
                       shape: RoundedRectangleBorder(
