@@ -17,7 +17,7 @@ class CreateScreen extends StatelessWidget {
         ),
         child: Center(
           child: Container(
-            margin: const EdgeInsets.symmetric(vertical: 150, horizontal: 20),
+            margin: const EdgeInsets.symmetric(vertical: 100, horizontal: 20),
             padding: const EdgeInsets.all(40),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
@@ -95,6 +95,32 @@ class CreateScreen extends StatelessWidget {
                     ),
                     child: const Text(
                       "Submit", 
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ),
+                
+                const SizedBox(height: 15),
+                
+                SizedBox(
+                  width: double.infinity,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    }, 
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    child: const Text(
+                      "Go Back", 
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 16,
