@@ -44,6 +44,7 @@ class Api {
                   name: value['name'],
                   email: value['email'],
                   phone: value['phone'],
+                  id: value['_id'].toString(),
                 ),
               )
             });
@@ -55,4 +56,18 @@ class Api {
       debugPrint(e.toString());
     }
   }
+
+
+//UPDATE API to update user
+static updateUser(id, body1) async {
+  var url = Uri.parse(baseUrl + "update_user/$id");
+
+  final res = await http.put(url, body: body1);
+
+  if (res.statusCode == 200) {
+    print(jsonDecode(res.body));
+  }else {
+    print("Failed to update user DATA");
+  }
+}
 }

@@ -52,3 +52,17 @@ app.get('/api/get_users', (_req, res) => {
     });
   }
 });
+
+//UPDATE API
+app.put('/api/update_user/:id', (req, res)=>{
+  let id = req.params.id*1;
+  let userTOBEUpdated = userData.find(user=>user.id === id);
+  let index = userData.indexOf(userTOBEUpdated);
+
+  userData[index] = req.body;
+
+  res.status(200).send({
+    statusCode: 200,
+    Message: "User update successfully",
+  });
+})
