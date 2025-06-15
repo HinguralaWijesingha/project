@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:frontend/pages/createpage.dart";
+import "package:frontend/pages/getdata.dart";
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -62,7 +63,9 @@ class HomePage extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton.icon(
-                    onPressed: () {},
+                    onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (_)=> const ShowScreen()));
+                    },
                     icon: const Icon(Icons.read_more_rounded, color: Colors.white),
                     label: const Text(
                       "READ",

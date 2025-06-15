@@ -7,13 +7,15 @@ app.use(express.json());
 app.use(express.urlencoded({ 
     extended: true 
     }))
+
 const userData = [];
-  port = 3000;
+
+port = 3000;
 app.listen(port, () => {
   console.log(`Server is running on ${port}`);
 });
 
-//post API
+//POST API
 
 app.post('/api/add_user', (req, res) => {
 
@@ -33,4 +35,20 @@ app.post('/api/add_user', (req, res) => {
     Message: "User added successfully",
     user: pdata
   });
+});
+
+//GET API
+app.get('/api/get_users', (_req, res) => {
+
+  if(userData.length > 0) {
+    res.status(200).send({
+      statusCode: 200,
+      users: userData,
+    });
+  }else{
+    res.status(404).send({
+      statusCode: 404,
+      users: [],
+    });
+  }
 });
