@@ -44,7 +44,7 @@ class Api {
                   name: value['name'],
                   email: value['email'],
                   phone: value['phone'],
-                  id: value['_id'].toString(),
+                  id: value['id'].toString(),
                 ),
               )
             });
