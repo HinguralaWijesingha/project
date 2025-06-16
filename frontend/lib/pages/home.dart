@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:frontend/pages/createpage.dart";
+import "package:frontend/pages/deletepage.dart";
 import "package:frontend/pages/getdata.dart";
 import "package:frontend/pages/updatedata.dart";
 
@@ -113,7 +114,9 @@ class HomePage extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton.icon(
-                    onPressed: () {},
+                    onPressed: () {
+                     Navigator.of(context).push(MaterialPageRoute(builder: (_)=> const DeleteScreen()));
+                    },
                     icon: const Icon(Icons.delete, color: Colors.white),
                     label: const Text(
                       "DELETE",

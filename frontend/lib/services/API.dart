@@ -70,4 +70,24 @@ static updateUser(id, body1) async {
     print("Failed to update user DATA");
   }
 }
+
+
+//DELETE API to delete user
+  static deleteUser(id) async {
+    var url = Uri.parse(baseUrl + "delete_user/$id");
+
+    try{
+    final res = await http.delete(url);
+
+    if (res.statusCode == 200) {
+      print(jsonDecode(res.body));
+    } else {
+      print("Failed to delete user DATA");
+    }
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
+
 }

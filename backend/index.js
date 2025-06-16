@@ -54,9 +54,9 @@ app.get('/api/get_users', (_req, res) => {
 });
 
 //UPDATE API
-app.put('/api/update_user/:id', (req, res)=>{
+app.put("/api/update_user/:id", (req, res)=>{
   let id = req.params.id*1;
-  let userTOBEUpdated = userData.find(user=>user.id === id);
+  let userTOBEUpdated = userData.find(p=>p.id === id);
   let index = userData.indexOf(userTOBEUpdated);
 
   userData[index] = req.body;
@@ -65,4 +65,19 @@ app.put('/api/update_user/:id', (req, res)=>{
     statusCode: 200,
     Message: "User update successfully",
   });
+})
+
+//DELETE API
+app.delete("/api/delete_user/:id", (req, res)=>{
+  let id = req.params.id*1;
+  let userTOBEUpdated = userData.find(p=>p.id === id);
+  let index = userData.indexOf(userTOBEUpdated);
+
+  userData.splice(index, 1);
+
+  res.status(200).send({
+    statusCode: 200,
+    Message: "User deleted successfully",
+  });
+
 })
